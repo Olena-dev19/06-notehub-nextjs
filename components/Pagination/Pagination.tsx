@@ -13,13 +13,13 @@ export default function Pagination({
 }: PaginationProps) {
   return (
     <ReactPaginate
+      previousLabel="←"
       breakLabel="..."
       nextLabel="→"
       onPageChange={({ selected }) => setCurrentPage(selected + 1)}
       pageRangeDisplayed={2}
       pageCount={totalPages}
       marginPagesDisplayed={1}
-      previousLabel="←"
       renderOnZeroPageCount={null}
       containerClassName={css.pagination}
       activeClassName={css.active}
