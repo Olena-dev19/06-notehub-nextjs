@@ -21,7 +21,7 @@ export default function Modal({ onClose, children }: ModalProps) {
     };
   }, [onClose]);
 
-  return createPortal(
+  return (
     <div
       className={css.backdrop}
       role="dialog"
@@ -31,7 +31,6 @@ export default function Modal({ onClose, children }: ModalProps) {
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
-    </div>,
-    document.getElementById("modal-window") as HTMLDivElement
+    </div>
   );
 }
