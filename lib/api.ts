@@ -8,7 +8,7 @@ axios.defaults.headers.common = {
   Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
 };
 
-interface FetchNotesParams {
+interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
 }
@@ -16,11 +16,11 @@ interface FetchNotesParams {
 export async function fetchNotes(
   defaultPage: number,
   searchQuery: string
-): Promise<FetchNotesParams> {
-  const response = await axios.get<FetchNotesParams>("/notes", {
+): Promise<FetchNotesResponse> {
+  const { data } = await axios.get<FetchNotesResponse>("/notes", {
     params: { page: defaultPage, search: searchQuery },
   });
-  return response.data;
+  return data;
 }
 
 export async function createNote(newNote: NewNote): Promise<Note> {

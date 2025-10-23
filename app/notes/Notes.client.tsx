@@ -20,7 +20,7 @@ export default function NotesPageDefault() {
     queryFn: () => fetchNotes(currentPage, searchQuery),
     placeholderData: keepPreviousData,
   });
-  const updateCarrentPage = (page: number) => {
+  const updateCurrentPage = (page: number) => {
     setCurrentPage(page);
   };
   const openModalWindow = () => {
@@ -42,7 +42,7 @@ export default function NotesPageDefault() {
           <Pagination
             totalPages={totalPage}
             currentPage={currentPage}
-            setCurrentPage={updateCarrentPage}
+            updateCurrentPage={updateCurrentPage}
           />
         )}
         <button onClick={openModalWindow} className={css.button}>

@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import css from "./Modal.module.css";
 
 import { useEffect } from "react";
@@ -19,8 +20,9 @@ export default function Modal({ onClose, children }: ModalProps) {
       document.body.style.overflow = "";
     };
   }, [onClose]);
-
-  return (
+  const modalRoot = document.getElementById("modal-root");
+  if (!modalRoot) return null;
+  return createPortal(
     <div
       className={css.backdrop}
       role="dialog"
@@ -30,6 +32,7 @@ export default function Modal({ onClose, children }: ModalProps) {
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 }
